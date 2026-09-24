@@ -16,6 +16,7 @@
 
 #import <Foundation/NSArray.h>
 #import <Foundation/NSBundle.h>
+#import <Foundation/NSCharacterSet.h>
 #import <Foundation/NSData.h>
 #import <Foundation/NSDictionary.h>
 #import <Foundation/NSError.h>

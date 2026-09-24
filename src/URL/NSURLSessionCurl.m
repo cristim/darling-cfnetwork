@@ -17,7 +17,7 @@
 #include <pthread.h>
 #include <unistd.h>
 
-static NSString *const kCurlLibraryPath = @"/usr/lib/libcurl.4.dylib";
+static const char kCurlLibraryPath[] = "/usr/lib/libcurl.4.dylib";
 
 // Upper bound for one curl_multi_wait; curl shortens it to its own timers.
 static const int kIdleWaitMilliseconds = 10000;
@@ -42,13 +42,13 @@ static NSMutableArray *pendingBlocks = nil;
 
 #define LOAD(table, field, name) \
     if ((table.field = dlsym(lib, name)) == NULL) \
-        return [[NSString alloc] initWithFormat:@"%@ lacks %s", kCurlLibraryPath, name]
+        return [[NSString alloc] initWithFormat:@"%s lacks %s", kCurlLibraryPath, name]
 
 static NSString *loadCurl(void)
 {
-    void *lib = dlopen([kCurlLibraryPath fileSystemRepresentation], RTLD_NOW | RTLD_LOCAL);
+    void *lib = dlopen(kCurlLibraryPath, RTLD_NOW | RTLD_LOCAL);
     if (lib == NULL)
-        return [[NSString alloc] initWithFormat:@"cannot load %@: %s", kCurlLibraryPath, dlerror()];
+        return [[NSString alloc] initWithFormat:@"cannot load %s: %s", kCurlLibraryPath, dlerror()];
 
     LOAD(curlAPI, easy_init, "curl_easy_init");
     LOAD(curlAPI, easy_setopt, "curl_easy_setopt");
