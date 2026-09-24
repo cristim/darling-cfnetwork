@@ -12,6 +12,7 @@
 
 #import "NSCFURLSession.h"
 #import "NSURLSessionCurl.h"
+#import "NSURLRequestInternal.h"
 
 #import <Foundation/NSArray.h>
 #import <Foundation/NSBundle.h>
