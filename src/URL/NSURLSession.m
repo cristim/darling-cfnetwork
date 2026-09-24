@@ -8,7 +8,6 @@
 #import <Foundation/NSURLSession.h>
 #import <Foundation/NSHTTPCookieStorage.h>
 #import <Foundation/NSURLCache.h>
-#import <Foundation/NSURLCredentialStorage.h>
 #import "NSCFURLSession.h"
 
 const int64_t NSURLSessionTransferSizeUnknown = -1LL;
@@ -79,8 +78,8 @@ static const NSInteger kDefaultMaximumConnectionsPerHost = 6;
 + (NSURLSessionConfiguration *)defaultSessionConfiguration
 {
     __NSCFURLSessionConfiguration *configuration = [[__NSCFURLSessionConfiguration alloc] init];
+    // URLCredentialStorage stays nil: Darling's NSURLCredentialStorage has no shared store.
     [configuration setHTTPCookieStorage:[NSHTTPCookieStorage sharedHTTPCookieStorage]];
-    [configuration setURLCredentialStorage:[NSURLCredentialStorage sharedCredentialStorage]];
     [configuration setURLCache:[NSURLCache sharedURLCache]];
     return [configuration autorelease];
 }
