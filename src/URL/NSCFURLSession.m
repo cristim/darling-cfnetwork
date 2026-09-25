@@ -374,9 +374,7 @@
 
 - (NSURLSessionDataTask *)dataTaskWithURL:(NSURL *)url completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler
 {
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    [request setHTTPMethod:@"POST"];
-    return [self dataTaskWithRequest:request completionHandler:completionHandler];
+    return [self dataTaskWithRequest:[NSURLRequest requestWithURL:url] completionHandler:completionHandler];
 }
 
 - (NSURLSessionDataTask *)dataTaskWithHTTPGetRequest:(NSURL *)url
