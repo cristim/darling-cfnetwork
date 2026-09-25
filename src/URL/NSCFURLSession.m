@@ -20,7 +20,7 @@
     static dispatch_once_t once = 0L;
     static NSURLSession *sharedSession = nil;
     dispatch_once(&once, ^{
-        sharedSession = (NSURLSession *)[[__NSCFURLSession alloc] initWithConfiguration:(NSURLSessionConfiguration *)[__NSCFURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:nil];
+        sharedSession = (NSURLSession *)[[__NSCFURLSession alloc] initWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:nil];
     });
     return sharedSession;
 }
