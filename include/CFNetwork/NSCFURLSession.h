@@ -4,9 +4,14 @@
 
 @class NSOperationQueue, NSString, __NSCFSessionBridge;
 
+// The bridged configuration is what NSURLSession hands out, so it has to inherit
+// +defaultSessionConfiguration from NSURLSessionConfiguration.
+// The bridged configuration is what NSURLSession hands out, so it has to inherit
+// +defaultSessionConfiguration from NSURLSessionConfiguration.
 __attribute__((visibility("hidden")))
-@interface __NSCFURLSessionConfiguration : NSObject
+@interface __NSCFURLSessionConfiguration : NSURLSessionConfiguration
 @end
+
 
 __attribute__((visibility("hidden")))
 @interface __NSCFURLSession : NSObject {

@@ -62,6 +62,16 @@
     return self;
 }
 
+// Tasks are self-contained and the session keeps no list of them, so there is
+// nothing to tear down when the app invalidates the session.
+- (void)finishTasksAndInvalidate
+{
+}
+
+- (void)invalidateAndCancel
+{
+}
+
 - (void)delegate_didFinishEventsForBackgroundURLSession
 {
     if ([self can_delegate_didFinishEventsForBackgroundURLSession])
